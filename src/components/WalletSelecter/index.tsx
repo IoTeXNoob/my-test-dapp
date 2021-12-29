@@ -30,12 +30,6 @@ import { metamaskUtils } from '../../lib/metaskUtils';
 import { useEffect } from 'react';
 import { Network } from '@/store/god';
 import { IotexMainnetConfig } from '../../config/IotexMainnetConfig';
-import { PolygonMainnetConfig } from '../../config/PolygonMainnetConfig';
-import { BSCMainnetConfig } from '../../config/BSCMainnetConfig';
-import { ETHMainnetConfig } from '../../config/ETHMainnetConfig';
-
-import { BSCTestnetConfig } from "../../config/BSCTestnetConfig";
-import { ETHKovanConfig } from "../../config/ETHKovanConfig";
 import { IotexTestnetConfig } from "../../config/IotexTestnetConfig";
 
 const toast = createStandaloneToast();
@@ -49,10 +43,10 @@ export const WalletSelecter = observer(() => {
       return god.eth.connector.showConnector;
     },
     get networks() {
-      return [ETHMainnetConfig, BSCMainnetConfig, IotexMainnetConfig, PolygonMainnetConfig];
+      return [IotexMainnetConfig];
     },
     get testnet() {
-      return [ETHKovanConfig, BSCTestnetConfig, IotexTestnetConfig]
+      return [IotexTestnetConfig]
     },
     close() {
       god.eth.connector.showConnector = false;
@@ -120,18 +114,6 @@ export const WalletSelecter = observer(() => {
     {
       title: 'ioPay',
       icon: '/images/iopay.svg'
-    },
-    {
-      title: 'Trust',
-      icon: '/images/trustwallet.svg'
-    },
-    {
-      title: 'Math',
-      icon: '/images/mathwallet.svg'
-    },
-    {
-      title: 'imToken',
-      icon: '/images/imtoken.svg'
     }
   ];
   const names = config.map((item) => item.title).join(', ');
